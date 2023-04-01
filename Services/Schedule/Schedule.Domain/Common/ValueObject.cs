@@ -54,15 +54,3 @@ public class Discount : ValueObject
         throw new NotImplementedException();
     }
 }
-
-public class Currency : ValueObject
-{
-    public Currency(string code) => Code = code;
-
-    public string Code { get; set;}
-
-    protected override IEnumerable<object> GetEqualityComponents()
-    {
-        throw new NotImplementedException();
-    }
-}
