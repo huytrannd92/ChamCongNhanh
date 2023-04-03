@@ -1,4 +1,5 @@
-﻿using Duende.IdentityServer.Models;
+﻿using Duende.IdentityServer;
+using Duende.IdentityServer.Models;
 
 namespace IdentityServer;
 
@@ -21,7 +22,7 @@ public static class Config
         new Client[]
             {
                 new Client
-                {   
+                {
                     ClientId = "client",
 
                     // no interactive user, use the clientid/secret for authentication
@@ -35,6 +36,51 @@ public static class Config
 
                     // scopes that client has access to
                     AllowedScopes = { "api1" }
+                },
+                // interactive ASP.NET Core Web App
+                // new Client
+                // {
+                //     ClientId = "web",
+                //     ClientSecrets = { new Secret("secret".Sha256()) },
+
+                //     AllowedGrantTypes = GrantTypes.Code,
+                    
+                //     // where to redirect to after login
+                //     RedirectUris = { "https://localhost:5002/signin-oidc" },
+
+                //     // where to redirect to after logout
+                //     PostLogoutRedirectUris = { "https://localhost:5002/signout-callback-oidc" },
+
+                //     AllowedScopes = new List<string>
+                //     {
+                //         IdentityServerConstants.StandardScopes.OpenId,
+                //         IdentityServerConstants.StandardScopes.Profile,
+                        
+                //         // scopes that client has access to
+                //         "api1"
+                //     }
+                // },
+                new Client
+                {
+                    ClientId = "webui-client",
+                    RequireClientSecret = false,
+                    // ClientSecrets = { new Secret("secret".Sha256()) },
+                    
+                    AllowedGrantTypes = GrantTypes.Code,
+                    
+                    // where to redirect to after login
+                    RedirectUris = { "https://localhost:3000/signin-oidc" },
+
+                    // where to redirect to after logout
+                    PostLogoutRedirectUris = { "https://localhost:3000/signout-callback-oidc" },
+
+                    AllowedScopes = new List<string>
+                    {
+                        IdentityServerConstants.StandardScopes.OpenId,
+                        IdentityServerConstants.StandardScopes.Profile,
+                         // scopes that client has access to
+                        "api1"
+                    }
                 }
             };
 }
