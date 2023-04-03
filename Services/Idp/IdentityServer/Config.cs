@@ -62,17 +62,17 @@ public static class Config
                 // },
                 new Client
                 {
-                    ClientId = "webui-client",
+                    ClientId = "webui",
                     RequireClientSecret = false,
                     // ClientSecrets = { new Secret("secret".Sha256()) },
                     
                     AllowedGrantTypes = GrantTypes.Code,
                     
                     // where to redirect to after login
-                    RedirectUris = { "https://localhost:3000/signin-oidc" },
+                    RedirectUris = { "http://localhost:3000/signin-oidc" },
 
                     // where to redirect to after logout
-                    PostLogoutRedirectUris = { "https://localhost:3000/signout-callback-oidc" },
+                    PostLogoutRedirectUris = { "http://localhost:3000/signout-callback-oidc" },
 
                     AllowedScopes = new List<string>
                     {

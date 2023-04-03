@@ -1,3 +1,4 @@
+using Duende.IdentityServer.Services;
 using Serilog;
 
 namespace IdentityServer;
@@ -14,6 +15,13 @@ internal static class HostingExtensions
             .AddInMemoryApiScopes(Config.ApiScopes)
             .AddInMemoryClients(Config.Clients)
             .AddTestUsers(TestUsers.Users);
+        builder.Services.AddSingleton<ICorsPolicyService>((container) => {
+            var logger = container.GetRequiredService<ILogger<DefaultCorsPolicyService>>();
+            return new DefaultCorsPolicyService(logger)
+            {
+                AllowAll = true
+            };
+        });
         return builder.Build();
     }
     
