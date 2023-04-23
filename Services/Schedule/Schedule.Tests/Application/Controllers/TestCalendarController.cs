@@ -1,7 +1,7 @@
 using FluentAssertions;
 using Microsoft.AspNetCore.Mvc;
 using Schedule.Api.Application.Queries;
-using Schedule.Infrastructure.Services;
+using Schedule.Api.Infrastructure.Services;
 
 namespace Schedule.Tests;
 
@@ -20,21 +20,6 @@ public class TestCalendarController
     }
 
     [Fact]
-    public async Task Get_OnSuccess_ReturnStatusCode200()
-    {
-        // Set up
-        var controller = new CalendarController(_calendarQueriesMock.Object, _identityServiceMock.Object);
-
-        // Execute
-        var result = (OkObjectResult)await controller.GetCurrentMonthAsync();
-
-        // Asserts
-        result.StatusCode.Should().Be(200);
-
-    }
-
-
-    [Fact]
     public async Task Get_CalendarListByUserId_ReturnStatusSucess200()
     {
         // Set up
@@ -43,7 +28,7 @@ public class TestCalendarController
         _calendarQueriesMock.Setup(x => x.GetCalendarByUserIdAsync(It.IsAny<string>()))
             .Returns(Task.FromResult(fakeCalendarList));
 
-        var controller = new CalendarController(_calendarQueriesMock.Object , _identityServiceMock.Object);
+        var controller = new CalendarController(_calendarQueriesMock.Object , _identityServiceMock.Object, _mediator.Object);
 
         // Execute
         var result = (OkObjectResult)await controller.GetCalendarListAsync();
