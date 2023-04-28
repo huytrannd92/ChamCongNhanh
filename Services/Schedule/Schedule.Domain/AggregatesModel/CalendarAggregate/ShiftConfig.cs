@@ -15,7 +15,7 @@ namespace Schedule.Domain.AggregatesModel.CalendarAggregate
         public DateTime StartHour { get; private set; }
         public DateTime EndHour { get;private set; }
 
-
+        public int CalendarId { get; set; }
 
         protected ShiftConfig() { }
 
