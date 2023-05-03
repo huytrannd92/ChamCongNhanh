@@ -1,20 +1,28 @@
 ﻿namespace Schedule.Domain.AggregatesModel.CompanyAggregate
 {
-    public class Employee :Entity 
+    public class Employee : Entity
     {
-        public int CompanyId { get; set; }
+        int _companyId { get; set; }
 
-        public int UserId { get; set; }
+        int _userId { get; set; }
 
-        public string EmployeeName { get; set; }
-        public string Email { get; set; }
+        string _employeeName { get; set; }
+        string _email { get; set; }
+        string _phoneNumber { get; set; }
 
-        public Employee(int companyId, int userId, string name, string email)
+        public int UserId
         {
-            CompanyId = companyId;
-            UserId = userId;
-            EmployeeName = name;    
-            Email = email;  
+            get { return _userId; }
+        }
+
+
+        public Employee(int companyId, int userId, string name, string email, string phoneNumber)
+        {
+            _companyId = companyId;
+            _userId = userId;
+            _employeeName = name;
+            _email = email;
+            _phoneNumber = phoneNumber;
         }
     }
 }

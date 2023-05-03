@@ -1,7 +1,15 @@
-﻿namespace Schedule.Domain.AggregatesModel.CompanyAggregate
+﻿using System;
+
+namespace Schedule.Domain.AggregatesModel.CompanyAggregate
 {
-    interface ICompanyRepository : IRepository<Company>
+    public interface ICompanyRepository : IRepository<Company>
     {
-        Company Add(Company shift);
+        Company Add(Company company);
+        Company Update(Company company);
+
+        Task<Company> GetAsync(int companyId);
+
+
+
     }
 }

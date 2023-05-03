@@ -1,6 +1,11 @@
-﻿namespace Schedule.Api.Application.Commands
+﻿using MediatR;
+
+namespace Schedule.Api.Application.Commands
 {
-    public class CreateCompanyCommand
+    public class CreateCompanyCommand : IRequest<bool>
     {
+        public string CompanyName { get; private set; }
+        public string CompanyAddress { get; private set; }
+
     }
 }

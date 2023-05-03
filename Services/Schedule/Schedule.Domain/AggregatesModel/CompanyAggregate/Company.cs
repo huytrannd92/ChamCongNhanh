@@ -26,14 +26,14 @@
             CompanyName = !string.IsNullOrWhiteSpace(companyName) ? companyName : throw new ArgumentNullException(nameof(companyName));
             CompanyAddress = !string.IsNullOrWhiteSpace(address) ? address : throw new ArgumentNullException(nameof(address));
         }
-        void AddEmployee(string name, string email, int userId)
+        public void AddEmployee(string name, string email, int userId, string phoneNumber)
         {
             var existingEmployee = _employees.FirstOrDefault(x => x.UserId == userId);
             if (existingEmployee != null) return;
-            _employees.Add(new Employee(Id, userId, name, email));
+            _employees.Add(new Employee(Id, userId, name, email, phoneNumber));
 
         }
-        void RemoveEmployee(int employeeId)
+        public void RemoveEmployee(int employeeId)
         {
             _employees.RemoveAll(i => i.Id == employeeId);
         }

@@ -9,10 +9,8 @@ namespace Schedule.Api.Application.Commands
         [DataMember]
         public int CalendarId { get; set; }
         [DataMember]
-        public int EmployeeId { get; set; }
+        public DateTime StartHour { get; set; }
         [DataMember]
-        private DateTime StartHour { get; set; }
-        [DataMember]
-        private DateTime EndHour { get; set; }
+        public DateTime EndHour { get; set; }
     }
 }
